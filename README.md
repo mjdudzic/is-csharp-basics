@@ -8,7 +8,9 @@ W celu aktywnego udziału w szkoleniu zalecane jest aby na swoim komputerze zain
 
 ### Visual Sudio Community
 
-IDE w darmowej wersji
+Visual Studio to narzędzie, które umożliwi interaktywną pracę z językiem C#.
+
+Narzędzie w darmowej wersji dostepne jest pod poniższym linkiem:
 
 https://visualstudio.microsoft.com/pl/free-developer-offers/
 
