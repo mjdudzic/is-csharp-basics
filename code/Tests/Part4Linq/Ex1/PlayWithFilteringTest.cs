@@ -21,7 +21,9 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = students;
+			var result = students
+				.Where(i => i.StudyingStartYear >= 2000)
+				.ToList();
 
 			_outputHelper.WriteLine($"Selected students count is {result.Count}");
 
@@ -38,7 +40,13 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = students;
+			var result = students
+				.Where(i => i.CurrentSemester < 3 && i.TotalScore > 100);
+
+			//var result2 = students
+			//	.Where(i => i.CurrentSemester < 3)
+			//	.Where(i => i.TotalScore > 100)
+			//	.ToList();
 
 			_outputHelper.WriteLine($"Selected students count is {result.Count()}");
 
@@ -47,7 +55,7 @@ namespace Tests.Part4Linq.Ex1
 				_outputHelper.WriteLine($"Selected student {student.FirstName} {student.LastName}");
 			}
 
-			result.Count.Should().BeLessThan(students.Count);
+			result.Count().Should().BeGreaterThan(0);
 		}
 	}
 }

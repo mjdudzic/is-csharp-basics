@@ -21,7 +21,8 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = false;
+			var result = students
+				.All(i => i.TotalScore > 0);
 
 			_outputHelper.WriteLine($"Total score is {result}");
 
@@ -33,7 +34,8 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = false;
+			var result = students
+				.Any(i => i.TotalScore > 300);
 
 			_outputHelper.WriteLine($"Total score is {result}");
 

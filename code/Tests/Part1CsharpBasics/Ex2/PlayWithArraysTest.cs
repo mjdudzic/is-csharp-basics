@@ -18,8 +18,9 @@ namespace Tests.Part1CsharpBasics.Ex2
 		{
 			// define array of integers with some random numbers
 			// get value of the last element 
+			var array = new[] {1, 2, 3, 47, 8};
 
-			var result = 0; // last itm in array
+			var result = array[^1]; // last itm in array
 
 			_outputHelper.WriteLine($"Last element is {result}");
 

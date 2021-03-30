@@ -21,14 +21,19 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			// Group students by study year
-			// In output display data grouped by year in following example ormat
-			// Year 1999
-			// [Student list]
-			// Year 2000
-			// [Student list]
+			var result = students
+				.GroupBy(key => key.StudyingStartYear)
+				.ToList();
 
-			var result = students;
+			foreach (var data in result.OrderBy(i => i.Key))
+			{
+				_outputHelper.WriteLine($"Year {data.Key}, Numbers of students {data.Count()}");
+
+				foreach (var student in data)
+				{
+					_outputHelper.WriteLine($"Selected student {student.FirstName} {student.LastName}");
+				}
+			}
 
 			result.Count().Should().BeLessThan(students.Count);
 		}

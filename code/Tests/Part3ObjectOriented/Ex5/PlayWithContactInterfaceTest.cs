@@ -30,28 +30,83 @@ namespace Tests.Part3ObjectOriented.Ex5
 
 			var student = new Student();
 			var teacher = new Teacher();
+			var worker = new Worker();
+			
+			SendEmail(student, "Hello");
+			SendEmail(teacher, "Hello");
+			SendEmail(worker, "Hello");
+			
+			SendSms(teacher, "Hello");
 
-			var studentEmail = string.Empty;
-			var teacherEmail = string.Empty;
-			var teacherPhoneNumber = string.Empty;
+			var studentEmail = student.GetEmailAddress();
+			var teacherEmail = teacher.GetEmailAddress();
+			var teacherPhoneNumber = teacher.GetMobilePhoneNumber();
 
 			studentEmail.Should().NotBeNullOrWhiteSpace();
 			teacherEmail.Should().NotBeNullOrWhiteSpace();
 			teacherPhoneNumber.Should().NotBeNullOrWhiteSpace();
 		}
 
-		public class Student : Person
+		public class Student : Person, IEmailContact
 		{
+			public string GetEmailAddress()
+			{
+				return "email@com";
+			}
 		}
 
-		public class Teacher : Person
+		public class Worker : IEmailContact, IMobilePhoneContact
 		{
+			public string GetEmailAddress()
+			{
+				return "email@com";
+			}
+
+			public string GetMobilePhoneNumber()
+			{
+				return "1234";
+			}
+		}
+
+		public class Teacher : Person, IEmailContact, IMobilePhoneContact
+		{
+			public string PhoneNumber { get; set; }
+			public string GetMobilePhoneNumber()
+			{
+				return "1234";
+			}
+
+			public string GetEmailAddress()
+			{
+				return "email@com";
+			}
 		}
 
 		public class Person
 		{
 			public string FirstName { get; set; }
 			public string LastName { get; set; }
+		}
+
+		public interface IEmailContact
+		{
+			string GetEmailAddress();
+		}
+
+		public interface IMobilePhoneContact
+		{
+			string GetMobilePhoneNumber();
+		}
+
+		public void SendSms(IMobilePhoneContact contact, string message)
+		{
+			
+			_outputHelper.WriteLine($"SMS message '{message}' sent to {contact.GetMobilePhoneNumber()}");
+		}
+
+		public void SendEmail(IEmailContact contact, string message)
+		{
+			_outputHelper.WriteLine($"Email message '{message}' sent to {contact.GetEmailAddress()}");
 		}
 	}
 }

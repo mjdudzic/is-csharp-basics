@@ -21,12 +21,22 @@ namespace Tests.Part2FlowControl.Ex1
 			// - text "child" if age is below 13
 			// - text "teenage" if age is between 13 and 17
 			// - text "adult" if age is 18 or more
-
-			var result = string.Empty;
+			var age = 22;
+			var result = YouAre(age);
 
 			_outputHelper.WriteLine($"Provided age means you are a(n) {result}");
 
 			result.Should().NotBeNullOrWhiteSpace();
+		}
+
+		public string YouAre(int age)
+		{
+			if (age < 13)
+			{
+				return "child";
+			}
+
+			return age <= 17 ? "teenage" : "adult";
 		}
 	}
 }

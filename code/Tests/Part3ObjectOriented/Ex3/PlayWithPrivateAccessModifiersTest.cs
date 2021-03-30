@@ -21,11 +21,33 @@ namespace Tests.Part3ObjectOriented.Ex3
 			// 3. Field _fullName should be set in constructor by using passed arguments firstName and lastName
 			// 4. Add public function that will return value stored in filed _fullName
 
-			var result = string.Empty;
+			var student = new Student("Jan", "Kowalski");
+			var result = student.GetFullName();
 
 			_outputHelper.WriteLine($"Student full name is {result}");
 
 			result.Should().NotBeNullOrWhiteSpace();
+		}
+
+		public class Student
+		{
+			private string _fullName;
+
+			public string FirstName { get; }
+			public string LastName { get; }
+
+			public Student(string firstName, string lastName)
+			{
+				FirstName = firstName;
+				LastName = lastName;
+
+				_fullName = $"Hello, {FirstName} {LastName}";
+			}
+
+			public string GetFullName()
+			{
+				return _fullName;
+			}
 		}
 	}
 }

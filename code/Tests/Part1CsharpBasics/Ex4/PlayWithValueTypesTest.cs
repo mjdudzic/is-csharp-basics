@@ -14,16 +14,25 @@ namespace Tests.Part1CsharpBasics.Ex4
 		}
 
 		[Fact]
-		public void RunFunctionToCalculateRectangleArea()
+		public void GetPriceWithVat()
 		{
 			var priceNet = 100d;
 
 			// Create and run function that will add VAT 23% to provided price
-			var result = 0; // priceNet + 23% VAT
+			var result = GetGrossPrice(priceNet); // priceNet + 23% VAT
 
 			_outputHelper.WriteLine($"Price including VAT is {result}");
+			_outputHelper.WriteLine($"Price without VAT is {priceNet}");
 
 			result.Should().BeGreaterThan(0);
+			priceNet.Should().Equals(100d);
+		}
+
+		public double GetGrossPrice(double priceNet)
+		{
+			priceNet += priceNet * 0.23;
+
+			return priceNet;
 		}
 	}
 }

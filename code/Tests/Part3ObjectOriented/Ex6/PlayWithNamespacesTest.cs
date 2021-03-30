@@ -1,4 +1,6 @@
 using FluentAssertions;
+using Tests.Part3ObjectOriented.Ex6.Area;
+using Tests.Part3ObjectOriented.Ex6.People;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -26,8 +28,8 @@ namespace Tests.Part3ObjectOriented.Ex6
 			// - OfficeWorker
 			// 3. Replace below objects with proper class types
 
-			object student = null;
-			object university = null;
+			var student = new Student();
+			var university = new University();
 
 			student.Should().NotBeNull();
 			university.Should().NotBeNull();

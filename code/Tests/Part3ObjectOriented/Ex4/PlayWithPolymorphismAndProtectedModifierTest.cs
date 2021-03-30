@@ -30,8 +30,11 @@ namespace Tests.Part3ObjectOriented.Ex4
 			// 8. Create variable to store full name for Student and for Teacher
 
 
-			var studentFullName = string.Empty;
-			var teacherFullName = string.Empty;
+			var student = new Student("Jan", "Kowalski");
+			var teacher = new Teacher("Ann", "Kowalski", "Dr");
+
+			var studentFullName = student.GetFullName();
+			var teacherFullName = teacher.GetFullName();
 
 			_outputHelper.WriteLine($"Student full name is {studentFullName}");
 			_outputHelper.WriteLine($"Teacher full name is {teacherFullName}");

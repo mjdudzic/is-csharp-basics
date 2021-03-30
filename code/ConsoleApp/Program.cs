@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp
 {
@@ -6,9 +7,8 @@ namespace ConsoleApp
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
-			string inputInt = Console.ReadLine();
-			Console.WriteLine(inputInt);
+			Console.WriteLine("Hello");
+
 		}
 	}
 }

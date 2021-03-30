@@ -21,11 +21,14 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var maxScore = 0;
+			var maxScore = students
+				.Max(i => i.TotalScore);
 
-			var minScore = 0;
+			var minScore = students
+				.Min(i => i.TotalScore);
 
-			var avgScore = 0;
+			var avgScore = students
+				.Average(i => i.TotalScore);
 
 			_outputHelper.WriteLine($"Max score is {maxScore}");
 			_outputHelper.WriteLine($"Min score is {minScore}");
@@ -41,7 +44,8 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = 0;
+			var result = students
+				.Sum(i => i.TotalScore);
 
 			_outputHelper.WriteLine($"Total score is {result}");
 

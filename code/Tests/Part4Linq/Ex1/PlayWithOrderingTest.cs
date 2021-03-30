@@ -21,7 +21,8 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = students;
+			var result = students
+				.OrderBy(i => i.TotalScore);
 
 			foreach (var student in result)
 			{
@@ -36,7 +37,8 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = students;
+			var result = students
+				.OrderByDescending(i => i.TotalScore);
 
 			foreach (var student in result)
 			{
@@ -51,7 +53,9 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			Student result = null;
+			var result = students
+				.OrderByDescending(i => i.TotalScore)
+				.FirstOrDefault();
 
 			_outputHelper.WriteLine($"Selected student {result.FirstName} {result.LastName}");
 

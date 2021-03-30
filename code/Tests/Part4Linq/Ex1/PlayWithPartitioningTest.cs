@@ -21,7 +21,9 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = students;
+			var result = students
+				.OrderByDescending(i => i.TotalScore)
+				.Take(3);
 
 			foreach (var student in result)
 			{
@@ -36,7 +38,10 @@ namespace Tests.Part4Linq.Ex1
 		{
 			var students = _testData.Students;
 
-			var result = students;
+			var result = students
+				.OrderByDescending(i => i.TotalScore)
+				.Skip(3)
+				.Take(3);
 
 			foreach (var student in result)
 			{

@@ -1,3 +1,4 @@
+using ExercisesLibrary;
 using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
@@ -17,12 +18,19 @@ namespace Tests.Part1CsharpBasics.Ex3
 		public void RunFunctionToCalculateRectangleArea()
 		{
 			// define variable 'a' and 'b' that represent rectangle side size
+			var sideA = 10d;
+			var sideB = 11d;
 
-			var result = 0; // rectangle area
+			var result = GetRectangleArea(sideA, sideB); // rectangle area
 
 			_outputHelper.WriteLine($"Rectangle area is {result}");
 
 			result.Should().BeGreaterThan(0);
+		}
+
+		public double GetRectangleArea(double sideA, double sideB)
+		{
+			return sideA * sideB;
 		}
 	}
 }

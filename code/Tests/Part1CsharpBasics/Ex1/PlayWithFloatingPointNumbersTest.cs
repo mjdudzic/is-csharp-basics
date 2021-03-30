@@ -18,8 +18,10 @@ namespace Tests.Part1CsharpBasics.Ex1
 		{
 			//price = some double
 			//vat = some double
+			var price = 10.0d;
+			var vat = 0.23;
 			
-			var result = 0; //result = price with vat
+			var result = price + price * vat; //result = price with vat
 
 			_outputHelper.WriteLine($"gross price = {result}");
 
@@ -31,8 +33,10 @@ namespace Tests.Part1CsharpBasics.Ex1
 		{
 			//triangleBase = some integer
 			//triangleHeight = some integer
+			var triangleBase = 10;
+			var triangleHeight = 12;
 
-			var result = 0; //result = 1/2 * triangleBase * triangleHeight
+			var result = 0.5 * triangleBase * triangleHeight; //result = 1/2 * triangleBase * triangleHeight
 
 			_outputHelper.WriteLine($"triangle area = {result}");
 

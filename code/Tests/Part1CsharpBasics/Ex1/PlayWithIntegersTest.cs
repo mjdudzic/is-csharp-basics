@@ -1,3 +1,5 @@
+using System;
+using ExercisesLibrary;
 using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
@@ -18,8 +20,11 @@ namespace Tests.Part1CsharpBasics.Ex1
 		{
 			//a = some integer
 			//b = some integer
-			
-			var result = 0; //result = a2 + b2
+			//var result = a*a + b*b
+			var a = 3;
+			var b = 4;
+
+			var result = a * a + b * b; //result = a2 + b
 
 			_outputHelper.WriteLine($"c2 = {result}");
 

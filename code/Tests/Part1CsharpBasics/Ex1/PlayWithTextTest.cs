@@ -20,7 +20,11 @@ namespace Tests.Part1CsharpBasics.Ex1
 			//lastName = Your last name
 			//full name = firstName lastName
 
-			var result = 0; //result = full name length (with space in between)
+			var firstName = "Marcin";
+			var lastName = "Dudzic";
+			var fullName = $"{firstName} {lastName}";
+
+			var result = fullName.Length; //result = full name length (with space in between)
 
 ;			_outputHelper.WriteLine($"Your full name length is {result}");
 
@@ -32,9 +36,11 @@ namespace Tests.Part1CsharpBasics.Ex1
 		{
 			var message = "The quickest way to a man's heart is with Chuck Norris' fist.";
 
-			var result = message; //in message replace 'a' with 'x' and b with y
+			var result = message
+				.Replace("a", "x")
+				.Replace("b", "y"); //in message replace 'a' with 'x' and b with y
 
-			_outputHelper.WriteLine($"Encoded message is {result}");
+			_outputHelper.WriteLine($"Encoded message {message} is {result}");
 
 			result.Length.Should().BeGreaterThan(0);
 		}

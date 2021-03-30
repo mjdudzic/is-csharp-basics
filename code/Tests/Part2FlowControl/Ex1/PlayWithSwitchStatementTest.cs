@@ -21,12 +21,23 @@ namespace Tests.Part2FlowControl.Ex1
 			// create function that will return country name where the car brand owner has place
 			// e.g for Izera function should return Poland
 
-			var carBrand = string.Empty;
-			var result = string.Empty;
+			var carBrand = "Izera";
+			var result = GetCarOrigin(carBrand);
 
 			_outputHelper.WriteLine($"Car brand {carBrand} origins from {result}");
 
 			result.Should().NotBeNullOrWhiteSpace();
+		}
+
+		public string GetCarOrigin(string carBrandName)
+		{
+			return carBrandName switch
+			{
+				"VW" => "Germany",
+				"Audi" => "Germany",
+				"Izera" => "Poland",
+				_ => "Unknown"
+			};
 		}
 	}
 }

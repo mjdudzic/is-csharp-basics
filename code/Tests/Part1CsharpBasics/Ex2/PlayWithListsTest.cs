@@ -21,7 +21,9 @@ namespace Tests.Part1CsharpBasics.Ex2
 			// Add your name to created list
 			// Define at what index int he list is your name
 
-			var result = 0; //result = index value
+			var list = new List<string> { "Jan", "Anna", "Marcin", "Kasia" };
+
+			var result = list.IndexOf("Marcin"); //result = index value
 
 			_outputHelper.WriteLine($"Your name is at {result} index");
 

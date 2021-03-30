@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using FluentAssertions.Specialized;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -26,7 +27,31 @@ namespace Tests.Part3ObjectOriented.Ex7
 
 			var exceptionHandled = false;
 
+			try
+			{
+				DoSomething();
+			}
+			catch (NotImplementedException e)
+			{
+				exceptionHandled = true;
+				_outputHelper.WriteLine($"{e.Message}");
+			}
+			catch (Exception e)
+			{
+				_outputHelper.WriteLine($"{e.Message}");
+			}
+			finally
+			{
+				_outputHelper.WriteLine("Run final block");
+			}
+			
+
 			exceptionHandled.Should().BeTrue();
+		}
+
+		private void DoSomething()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
