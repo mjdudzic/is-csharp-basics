@@ -8,7 +8,7 @@ Utwórz klasę JokesService, która będzie miała metodę
 
 - SaveNewJokesIntoFile - metoda zapisuje nowe żarty w określonym pliku
   - Paramtery wejściowe dla metody to
-    - cieżka do pśliku
+    - ścieżka do pliku
     - liczba żartów jakie powinny być zapisane
   - Sposób działania:
     - metoda pobiera żart z wykorzystaniem zewnętrznego API w ilości jaka została wskazana przez parametr wejściowy
