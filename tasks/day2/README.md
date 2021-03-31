@@ -16,7 +16,7 @@ Utwórz klasę JokesService, która będzie miała metodę
 
 ### Szczegóły techniczne:
 
-Adres API: https://api.chucknorris.io/
+Adres API: https://api.chucknorris.io/jokes/random
 
 Format danych w pliku
 
