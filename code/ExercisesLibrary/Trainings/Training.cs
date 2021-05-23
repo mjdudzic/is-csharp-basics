@@ -54,24 +54,11 @@ namespace ExercisesLibrary.Trainings
 
 		public decimal CalculateCosts()
 		{
-			var trainer = 1000m;
-			var cateringPerPerson = 50m;
-			var room = 2000m;
+			var trainer = 1000.0m;
+			var cateringPerPerson = 50.50m;
+			var room = 2000.0m;
 
 			return Participants.Count * cateringPerPerson + trainer + room;
 		}
-	}
-
-	public class Participant : Person
-	{
-		public int Id { get; set; }
-		public string Email { get; set; }
-		public double Score { get; set; }
-	}
-
-	public abstract class Person
-	{
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
 	}
 }

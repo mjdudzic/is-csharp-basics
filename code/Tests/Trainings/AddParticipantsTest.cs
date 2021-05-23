@@ -24,6 +24,10 @@ namespace Tests.Trainings
 				LastName = _fixture.Create<string>(),
 			};
 
+			var p = new Participant();
+			p.Id = 1;
+			p.Email = "@";
+
 			// Act
 			training.AddParticipant(participant);
 
@@ -53,9 +57,11 @@ namespace Tests.Trainings
 			training.AddParticipant(participant);
 
 			// Assert
-			training
+			var result = training
 				.Participants
-				.Count(i => i.Id == participant.Id)
+				.Count(i => i.Id == participant.Id);
+
+			result
 				.Should()
 				.Be(1);
 		}
@@ -67,6 +73,7 @@ namespace Tests.Trainings
 			var training = new Training();
 
 			// Act
+
 			Action action = () => training.SetScore(1, 10.0);
 
 			// Assert
