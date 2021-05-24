@@ -20,9 +20,9 @@ namespace Tests.Part6ApiIntegration.Ex1
 
 		[Fact]
 		public async Task ValidateRequestCompletedSuccessfully()
-		{
+		{ 
 			var apiEndpoint = new Uri("https://jsonplaceholder.typicode.com/posts/1");
-
+			
 			var client = new HttpClient();
 
 			var response = await client.GetAsync(apiEndpoint);
@@ -59,12 +59,16 @@ namespace Tests.Part6ApiIntegration.Ex1
 
 			var response = await client.GetAsync(apiEndpoint);
 
-			var content = await response.Content.ReadAsStringAsync();
+			var result = response.IsSuccessStatusCode;
+
+			if (result)
+			{
+				var content = await response.Content.ReadAsStringAsync();
+
+				_outputHelper.WriteLine($"content is: {content}");
+			}
 
 			_outputHelper.WriteLine($"response status code: {response.StatusCode}");
-			_outputHelper.WriteLine($"content is: {content}");
-
-			var result = response.IsSuccessStatusCode;
 
 			result.Should().BeTrue();
 		}

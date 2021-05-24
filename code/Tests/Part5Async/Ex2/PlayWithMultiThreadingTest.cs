@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using ExercisesLibrary.ImageProcessing;
 using FluentAssertions;
@@ -21,6 +22,7 @@ namespace Tests.Part5Async.Ex2
 		public async Task ExecuteCalculationInSeparatedThread()
 		{
 			var inputData = "test";
+
 			var task = Task.Run(() =>
 			{
 				if (string.IsNullOrWhiteSpace(inputData) == false)
@@ -30,7 +32,7 @@ namespace Tests.Part5Async.Ex2
 				var randomNumber = new Random().Next(1, 100);
 				return randomNumber;
 			});
-			
+
 			var result = await task;
 
 			_outputHelper.WriteLine($"Result is {result}");

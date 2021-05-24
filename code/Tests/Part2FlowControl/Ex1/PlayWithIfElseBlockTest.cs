@@ -31,7 +31,7 @@ namespace Tests.Part2FlowControl.Ex1
 
 		public string YouAre(int age)
 		{
-			if (age < 13)
+			if (age < 13 || age > 10) 
 			{
 				return "child";
 			}

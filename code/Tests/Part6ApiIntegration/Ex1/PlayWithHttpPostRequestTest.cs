@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
@@ -27,11 +28,13 @@ namespace Tests.Part6ApiIntegration.Ex1
 			var apiEndpoint = new Uri("https://is-mjd-books.azurewebsites.net/books");
 
 			var client = new HttpClient();
+			var request = new HttpRequestMessage();
 
+			var book = _fixture.Create<Book>();
 			var response = await client.PostAsync(
 				apiEndpoint, 
 				new StringContent(
-					JsonSerializer.Serialize(_fixture.Create<Book>()), 
+					JsonSerializer.Serialize(book), 
 					Encoding.UTF8, 
 					"application/json"));
 

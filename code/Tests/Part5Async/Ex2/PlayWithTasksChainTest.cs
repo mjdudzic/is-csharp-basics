@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -49,19 +48,31 @@ namespace Tests.Part5Async.Ex2
 			//var filePath = "Part5Async/Ex1/TestData/file1.txt";
 			//var filePath = "Part5Async\\Ex1\\TestData\\file1.txt";
 
-			var existingFileReadTask = File.ReadAllTextAsync(existingFilePath);
-
-			var newFileWriteTask = existingFileReadTask
+			var existingFileReadTask = File.ReadAllTextAsync(existingFilePath)
 				.ContinueWith(
-					sourceTask => File.WriteAllTextAsync(newFilePath, sourceTask.Result),
-					TaskContinuationOptions.OnlyOnRanToCompletion);
+					sourceTask => File
+						.WriteAllTextAsync(newFilePath, sourceTask.Result),
+					TaskContinuationOptions.OnlyOnRanToCompletion)
+				.ContinueWith(sourceTask =>
+				{
+					_outputHelper.WriteLine("result");
+				});
 
-			var runAlwaysTask = newFileWriteTask.ContinueWith(_ =>
-			{
-				_outputHelper.WriteLine("result");
-			});
+			//var newFileWriteTask = existingFileReadTask
+			//	.ContinueWith(
+			//		sourceTask => File.WriteAllTextAsync(newFilePath, sourceTask.Result),
+			//		TaskContinuationOptions.OnlyOnRanToCompletion)
+			//	.ContinueWith(sourceTask =>
+			//	{
+			//		_outputHelper.WriteLine("result");
+			//	});
 
-			await runAlwaysTask;
+			//var runAlwaysTask = newFileWriteTask.ContinueWith(_ =>
+			//{
+			//	_outputHelper.WriteLine("result");
+			//});
+
+			await existingFileReadTask;
 
 			var result = await File.ReadAllTextAsync(newFilePath);
 

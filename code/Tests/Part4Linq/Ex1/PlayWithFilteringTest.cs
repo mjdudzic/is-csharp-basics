@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -22,17 +24,37 @@ namespace Tests.Part4Linq.Ex1
 			var students = _testData.Students;
 
 			var result = students
-				.Where(i => i.StudyingStartYear >= 2000)
+				.Where(i => i.StudyingStartYear >= 2021)
 				.ToList();
 
-			_outputHelper.WriteLine($"Selected students count is {result.Count}");
+			//var result3 =
+			//	from student in students
+			//	where student.StudyingStartYear > 200
+			//	select student;
+
+			//var result2 = new List<Student>();
+			//for (int i = 0; i < students.Count; i++)
+			//{
+			//	var student = students[i];
+			//	if (student.StudyingStartYear >= 2000)
+			//	{
+			//		result2.Add(student);
+			//	}
+			//}
+
+			_outputHelper.WriteLine($"Selected students count is {result.Count()}");
 
 			foreach (var student in result)
 			{
 				_outputHelper.WriteLine($"Selected student {student.FirstName} {student.LastName}");
 			}
 
-			result.Count.Should().BeLessThan(students.Count);
+			result.Count().Should().BeLessThan(students.Count);
+		}
+
+		public bool Expr(Student student)
+		{
+			return student.StudyingStartYear >= 2000;
 		}
 
 		[Fact]

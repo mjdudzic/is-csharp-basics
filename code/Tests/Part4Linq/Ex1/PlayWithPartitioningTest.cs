@@ -23,6 +23,7 @@ namespace Tests.Part4Linq.Ex1
 
 			var result = students
 				.OrderByDescending(i => i.TotalScore)
+				.ThenByDescending(i => i.StudyingStartYear)
 				.Take(3);
 
 			foreach (var student in result)

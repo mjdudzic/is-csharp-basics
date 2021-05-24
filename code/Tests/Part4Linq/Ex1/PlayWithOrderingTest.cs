@@ -1,4 +1,5 @@
 using System.Linq;
+using Castle.Core;
 using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
@@ -22,7 +23,7 @@ namespace Tests.Part4Linq.Ex1
 			var students = _testData.Students;
 
 			var result = students
-				.OrderBy(i => i.TotalScore);
+				.OrderBy(i => i.TotalScore );
 
 			foreach (var student in result)
 			{

@@ -1,4 +1,5 @@
 using System;
+using Castle.Core.Logging;
 using FluentAssertions;
 using FluentAssertions.Specialized;
 using Xunit;
@@ -9,6 +10,7 @@ namespace Tests.Part3ObjectOriented.Ex7
 	public class PlayWithTryCatchTest
 	{
 		private readonly ITestOutputHelper _outputHelper;
+		private readonly ILogger _logger;
 
 		public PlayWithTryCatchTest(ITestOutputHelper outputHelper)
 		{
@@ -26,6 +28,7 @@ namespace Tests.Part3ObjectOriented.Ex7
 			// - At final write a line wit a message operation has been completed
 
 			var exceptionHandled = false;
+			//DoSomething();
 
 			try
 			{
@@ -34,24 +37,38 @@ namespace Tests.Part3ObjectOriented.Ex7
 			catch (NotImplementedException e)
 			{
 				exceptionHandled = true;
-				_outputHelper.WriteLine($"{e.Message}");
+				_outputHelper.WriteLine($"NotImplementedException {e.Message}");
+			}
+			catch (MyException e)
+			{
+				exceptionHandled = true;
+				_outputHelper.WriteLine($"MyException {e.Message}");
+
+				//throw;
 			}
 			catch (Exception e)
 			{
-				_outputHelper.WriteLine($"{e.Message}");
+				_outputHelper.WriteLine($"Exception {e.Message}");
 			}
 			finally
 			{
 				_outputHelper.WriteLine("Run final block");
 			}
 			
-
 			exceptionHandled.Should().BeTrue();
 		}
 
 		private void DoSomething()
 		{
-			throw new NotImplementedException();
+			throw new MyException("Coœ posz³o nie tak");
+		}
+
+		private class MyException : Exception
+		{
+			public MyException(string message)
+				: base(message)
+			{
+			}
 		}
 	}
 }

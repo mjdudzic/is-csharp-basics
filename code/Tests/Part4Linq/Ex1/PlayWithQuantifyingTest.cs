@@ -35,7 +35,15 @@ namespace Tests.Part4Linq.Ex1
 			var students = _testData.Students;
 
 			var result = students
-				.Any(i => i.TotalScore > 300);
+				.Any(i => i.CurrentSemester > 1 && i.TotalScore > 100);
+
+			if (students.Count > 0)
+			{
+			}
+
+			if (students.Any())
+			{
+			}
 
 			_outputHelper.WriteLine($"Total score is {result}");
 

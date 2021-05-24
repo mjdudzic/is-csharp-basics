@@ -36,7 +36,9 @@ namespace Tests.Part2FlowControl.Ex1
 				return "child";
 			}
 
-			return age <= 17 ? "teenage" : "adult";
+			return age <= 17 
+				? "teenage" 
+				: "adult";
 		}
 	}
 }
